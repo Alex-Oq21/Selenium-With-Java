@@ -22,9 +22,9 @@ public class Main {
         }*/
 
         try{
-           driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
+           driver.get("https://www.youtube.com/");
            Thread.sleep(2000);
-           driver.findElement(By.id("n-randompage")).click();
+           driver.findElement(By.xpath("//*[@id=\"content\"]//*[text() = 'Explorar']")).click();
            Thread.sleep(2000);
            String title = driver.getTitle();
             System.out.println(title);
