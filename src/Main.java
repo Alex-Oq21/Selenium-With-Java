@@ -7,11 +7,18 @@ public class Main {
         WebDriver driver = new ChromeDriver();
 
         try {
+            driver.get("https://www.youtube.com/");
+
             Thread.sleep(5000);
+            
+            String title = driver.getTitle();
+            System.out.println(title);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            driver.quit();
         }
 
-        driver.quit();
+
     }
 }
