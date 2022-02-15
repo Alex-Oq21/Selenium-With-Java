@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
 import java.sql.Driver;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,13 +21,13 @@ public class Main {
         }finally {
             driver.quit();
         }*/
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         try{
-           driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
-           Thread.sleep(2000);
-           String content = driver.findElement(By.cssSelector("#main-tfa > p:nth-child(5)")).getText();
+           driver.get("/index_completo.html");
 
-            System.out.println(content);
+           driver.findElement(By.id("explicitWaitButton")).click();
+            Thread.sleep(4000);
+
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
