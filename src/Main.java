@@ -22,12 +22,11 @@ public class Main {
         }*/
 
         try{
-           driver.get("https://www.youtube.com/");
+           driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
            Thread.sleep(2000);
-           driver.findElement(By.xpath("//*[@id=\"content\"]//*[text() = 'Explorar']")).click();
-           Thread.sleep(2000);
-           String title = driver.getTitle();
-            System.out.println(title);
+           String content = driver.findElement(By.cssSelector("#main-tfa > p:nth-child(5)")).getText();
+
+            System.out.println(content);
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
