@@ -51,14 +51,37 @@ public class Main {
             driver.quit();
         }
 
-        */
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         try{
-            driver.get("http://127.0.0.1:5500/index_completo.html");
+            driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
 
             //WebDriverWait driverWait = new WebDriverWait(driver, 10);
             WebElement webElement = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id("explicitWaitButton")));
             webElement.click();
+            Thread.sleep(4000);
+
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            driver.quit();
+        }*/
+        String title = "Selenium - Wikipedia, la enciclopedia libre";
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        try{
+            driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
+
+            WebElement TextBox = driver.findElement(By.id("searchInput"));
+            WebElement Button = driver.findElement(By.id("searchButton"));
+            Thread.sleep(2000);
+            TextBox.sendKeys("Selenium");
+            Button.click();
+            String expectedTitle = driver.getTitle();
+            if(title.equals(expectedTitle)){
+                System.out.println("It is the title");
+            }else{
+                System.out.println("Something is wrong");
+            }
             Thread.sleep(4000);
 
         }catch (InterruptedException e){
