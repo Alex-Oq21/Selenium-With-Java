@@ -69,19 +69,23 @@ public class Main {
         String title = "Selenium - Wikipedia, la enciclopedia libre";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         try{
-            driver.get("https://es.wikipedia.org/wiki/Wikipedia:Portada");
+            driver.get("http:/index_completo.html");
 
-            WebElement TextBox = driver.findElement(By.id("searchInput"));
-            WebElement Button = driver.findElement(By.id("searchButton"));
+            WebElement usernameTextBox = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+            WebElement passwordTextBox = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+            WebElement Button = driver.findElement(By.cssSelector("#botonLogin"));
             Thread.sleep(2000);
-            TextBox.sendKeys("Selenium");
+            usernameTextBox.sendKeys("Username");
+            passwordTextBox.sendKeys("Password");
             Button.click();
-            String expectedTitle = driver.getTitle();
-            if(title.equals(expectedTitle)){
+
+            //String expectedTitle = driver.getTitle();
+
+            /*if(title.equals(expectedTitle)){
                 System.out.println("It is the title");
             }else{
                 System.out.println("Something is wrong");
-            }
+            }*/
             Thread.sleep(4000);
 
         }catch (InterruptedException e){
