@@ -21,7 +21,7 @@ public class SecondMain {
             comboBoxMultiple.deselectByIndex(1);
 
 
-            WebElement bottom = driver.findElement(By.id("enviaCheckboxes"));
+            WebElement bottom = driver.findElement(By.id("enviaComboboxes"));
             bottom.click();
             Thread.sleep(5000);
         }catch (InterruptedException e){
