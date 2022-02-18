@@ -1,10 +1,10 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.v85.indexeddb.model.Key;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -55,13 +55,24 @@ public class SecondMain {
             driver.findElement(By.cssSelector("[name^='comi'][value$='sta']")).click();
 
             driver.findElement(By.xpath("//*[@id=\"enviaRadiobutton\"]")).click();
-            Thread.sleep(5000);*/
-            driver.get("http://127.0.0.1:5500/index_completo.html");
-            WebElement calendar = driver.findElement(By.name("fecha"));
-            Thread.sleep(2000);
-            calendar.sendKeys("10052020" + Keys.TAB + "430");
             Thread.sleep(5000);
+            driver.get("http://127.0.0.1:5500/index_completo.html");
+               WebElement calendar = driver.findElement(By.name("fecha"));
+               calendar.sendKeys("10052020" + Keys.TAB + "1040");
+               Thread.sleep(2000);
+               Thread.sleep(5000);
+        */
+            driver.get("http://127.0.0.1:5500/index_completo.html");
+            WebElement button = driver.findElement(By.xpath("//*[@id=\"buttonAlertConfirm\"]"));
+            Thread.sleep(2000);
+            button.click();
 
+            WebDriverWait wait = new WebDriverWait(driver,10);
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            Thread.sleep(4000);
+            alert.dismiss();
+
+            Thread.sleep(4000);
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {

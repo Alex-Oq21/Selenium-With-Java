@@ -66,7 +66,7 @@ public class Main {
         }finally {
             driver.quit();
         }*/
-        String title = "Selenium - Wikipedia, la enciclopedia libre";
+        //String title = "Selenium - Wikipedia, la enciclopedia libre";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         try{
             driver.get("http:/index_completo.html");
