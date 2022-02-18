@@ -26,7 +26,8 @@ public class SecondMain {
             WebElement bottom = driver.findElement(By.id("enviaComboboxes"));
             bottom.click();
             Thread.sleep(5000);*/
-            driver.get("http://127.0.0.1:5500/index_completo.html");
+
+            /*driver.get("http://127.0.0.1:5500/index_completo.html");
             List<WebElement> checkBoxes = driver.findElements(By.name("listaCompra"));
             for (WebElement check : checkBoxes){
                 check.click();
@@ -43,8 +44,19 @@ public class SecondMain {
 
             WebElement bottom = driver.findElement(By.id("enviaCheckboxes"));
             bottom.click();
+            Thread.sleep(5000);*/
+
+            driver.get("http://127.0.0.1:5500/index_completo.html");
+            WebElement drinkButton = driver.findElement(By.xpath("//input[@name='bebida' and  @value='agua']"));
+            drinkButton.click();
+            Thread.sleep(2000);
+
+            WebElement foodButton = driver.findElement(By.cssSelector("[name^='com'][value$='ada']"));
+            foodButton.click();
+
+            driver.findElement(By.xpath("//*[@id=\"enviaRadiobutton\"]")).click();
             Thread.sleep(5000);
-            
+
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
