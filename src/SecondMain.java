@@ -1,7 +1,9 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v85.indexeddb.model.Key;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -46,15 +48,18 @@ public class SecondMain {
             bottom.click();
             Thread.sleep(5000);*/
 
-            driver.get("http://127.0.0.1:5500/index_completo.html");
-            WebElement drinkButton = driver.findElement(By.xpath("//input[@name='bebida' and  @value='agua']"));
-            drinkButton.click();
+            /*driver.get("http://127.0.0.1:5500/index_completo.html");
+            driver.findElement(By.xpath("//input[@name='bebida' and @value='agua']")).click();
             Thread.sleep(2000);
 
-            WebElement foodButton = driver.findElement(By.cssSelector("[name^='com'][value$='ada']"));
-            foodButton.click();
+            driver.findElement(By.cssSelector("[name^='comi'][value$='sta']")).click();
 
             driver.findElement(By.xpath("//*[@id=\"enviaRadiobutton\"]")).click();
+            Thread.sleep(5000);*/
+            driver.get("http://127.0.0.1:5500/index_completo.html");
+            WebElement calendar = driver.findElement(By.name("fecha"));
+            Thread.sleep(2000);
+            calendar.sendKeys("10052020" + Keys.TAB + "430");
             Thread.sleep(5000);
 
         }catch (InterruptedException e){
