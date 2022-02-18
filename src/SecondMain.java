@@ -63,14 +63,15 @@ public class SecondMain {
                Thread.sleep(5000);
         */
             driver.get("http://127.0.0.1:5500/index_completo.html");
-            WebElement button = driver.findElement(By.xpath("//*[@id=\"buttonAlertConfirm\"]"));
+            WebElement button = driver.findElement(By.xpath("//*[@id=\"buttonAlertPrompt\"]"));
             Thread.sleep(2000);
             button.click();
 
             WebDriverWait wait = new WebDriverWait(driver,10);
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-            Thread.sleep(4000);
-            alert.dismiss();
+            Thread.sleep(3000);
+            alert.sendKeys("This is a text");
+            alert.accept();
 
             Thread.sleep(4000);
         }catch (InterruptedException e){
