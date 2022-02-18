@@ -4,12 +4,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class SecondMain {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
 
         try{
-            driver.get("http://127.0.0.1:5500/index_completo.html");
+            /*driver.get("http://127.0.0.1:5500/index_completo.html");
             Select comboBoxSimple = new Select(driver.findElement(By.xpath("//*[@id=\"combobox1\"]")));
             comboBoxSimple.selectByIndex(2);
 
@@ -23,7 +25,26 @@ public class SecondMain {
 
             WebElement bottom = driver.findElement(By.id("enviaComboboxes"));
             bottom.click();
+            Thread.sleep(5000);*/
+            driver.get("http://127.0.0.1:5500/index_completo.html");
+            List<WebElement> checkBoxes = driver.findElements(By.name("listaCompra"));
+            for (WebElement check : checkBoxes){
+                check.click();
+                Thread.sleep(2000);
+                System.out.println(check.isSelected());
+            }
+            System.out.println("----------------");
+            checkBoxes.get(0).click();
+            checkBoxes.get(3).click();
+
+            for (WebElement check: checkBoxes){
+                System.out.println(check.isSelected());
+            }
+
+            WebElement bottom = driver.findElement(By.id("enviaCheckboxes"));
+            bottom.click();
             Thread.sleep(5000);
+            
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
